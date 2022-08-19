@@ -10,13 +10,12 @@
     "overrides": [
     ],
     "parserOptions": {
-        "ecmaVersion": "latest",
+        "ecmaVersion": "12",
         "sourceType": "module"
     },
     "plugins": [
         "react"
     ],
     "rules": {
-        "no-use-before-define": 0
     }
 }
