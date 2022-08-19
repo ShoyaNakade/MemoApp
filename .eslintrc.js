@@ -17,5 +17,6 @@ module.exports = {
     'react',
   ],
   rules: {
+    'no-use-before-define': 0,
   },
 };
