@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View, TextInput, StyleSheet, KeyboardAvoidingView, 
+  View, TextInput, StyleSheet, KeyboardAvoidingView,
 } from 'react-native';
 import CircleButton from '../components/CircleButton';
 

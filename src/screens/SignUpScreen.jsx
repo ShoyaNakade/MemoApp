@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  View, Text, TextInput, StyleSheet, KeyboardAvoidingView, TouchableOpacity
+  View, Text, TextInput, StyleSheet, KeyboardAvoidingView, TouchableOpacity,
 } from 'react-native';
 import Button from '../components/Button';
 
