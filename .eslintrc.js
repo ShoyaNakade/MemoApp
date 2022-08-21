@@ -18,5 +18,6 @@ module.exports = {
   ],
   rules: {
     'no-use-before-define': 0,
+    'react/prop-types': ['error', { 'ignore': ['navigation'] }]
   },
 };
