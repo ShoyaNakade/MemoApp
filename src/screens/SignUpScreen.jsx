@@ -3,8 +3,8 @@ import {
   View, Text, TextInput, StyleSheet, KeyboardAvoidingView, TouchableOpacity,
   Alert,
 } from 'react-native';
-import Button from '../components/Button';
 import firebase from 'firebase';
+import Button from '../components/Button';
 import { translateErrors } from '../utils';
 
 export default function SignUpScreen(props) {
@@ -14,9 +14,7 @@ export default function SignUpScreen(props) {
 
   function handlePress() {
     firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        const { user } = userCredential;
-        console.log(user.id);
+      .then(() => {
         navigation.reset({
           index: 0,
           routes: [{ name: 'MemoList' }],

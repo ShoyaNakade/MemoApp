@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function LogOutButton() {
   const navigation = useNavigation(); // 直下で宣言しないと正常に動作しない。use fooksについて全て同じ。
-  
+
   function handlePress() {
     firebase.auth().signOut()
       .then(() => {

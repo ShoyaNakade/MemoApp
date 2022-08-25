@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import {
-  View, Text, TextInput, StyleSheet, KeyboardAvoidingView, TouchableOpacity,Alert,
+  View, Text, TextInput, StyleSheet, KeyboardAvoidingView, TouchableOpacity, Alert,
 } from 'react-native';
-import Button from '../components/Button';
 import firebase from 'firebase';
+
+import Button from '../components/Button';
 import Loading from '../components/Loading';
 import { translateErrors } from '../utils';
 
@@ -30,9 +31,7 @@ export default function LoginScreen(props) {
   function handlePress() {
     setLoading(true);
     firebase.auth().signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        const { user } = userCredential;
-        console.log(user.uid);
+      .then(() => {
         navigation.reset({
           index: 0,
           routes: [{ name: 'MemoList' }],

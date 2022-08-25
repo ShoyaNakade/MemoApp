@@ -1,4 +1,5 @@
 import React from 'react';
+import firebase from 'firebase';
 import {
   View, Text, StyleSheet, TouchableOpacity, FlatList, Alert,
 } from 'react-native';
@@ -8,7 +9,6 @@ import {
   shape, string, instanceOf, arrayOf,
 } from 'prop-types';
 import { dateToString } from '../utils';
-import firebase from 'firebase';
 
 export default function MemoList(props) {
   const { memos } = props;
