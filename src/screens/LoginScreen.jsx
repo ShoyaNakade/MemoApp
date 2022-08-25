@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View, Text, TextInput, StyleSheet, KeyboardAvoidingView, TouchableOpacity,Alert,
 } from 'react-native';
@@ -9,6 +9,18 @@ export default function LoginScreen(props) {
   const { navigation } = props;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'MemoList' }],
+        });
+      }
+    });
+    return unsubscribe; // userの監視状態をキャンセルするためアンマウント時に削除する
+  }, []); // []を入れることで、画面表示の一度だけ実行される
 
   function handlePress() {
     firebase.auth().signInWithEmailAndPassword(email, password)
