@@ -12,11 +12,13 @@ import LoginScreen from './src/screens/LoginScreen';
 import SignUpScreen from './src/screens/SignUpScreen';
 import { firebaseConfig } from './env';
 
-const Stack = createStackNavigator();
+require('firebase/firestore');
 
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig); // 既に初期化されている場合はスキップ
 }
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
