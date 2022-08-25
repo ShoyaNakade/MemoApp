@@ -1,4 +1,5 @@
 // import { StatusBar } from 'expo-status-bar';
+import { LogBox } from 'react-native';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
@@ -19,6 +20,7 @@ if (firebase.apps.length === 0) {
 }
 
 const Stack = createStackNavigator();
+LogBox.ignoreLogs(['Setting a timer']); // シミュレーターでのexpoでの警告が邪魔なので消す
 
 export default function App() {
   return (
