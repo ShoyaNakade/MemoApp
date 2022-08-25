@@ -4,11 +4,13 @@ import {
 } from 'react-native';
 import Button from '../components/Button';
 import firebase from 'firebase';
+import Loading from '../components/Loading';
 
 export default function LoginScreen(props) {
   const { navigation } = props;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
@@ -17,12 +19,15 @@ export default function LoginScreen(props) {
           index: 0,
           routes: [{ name: 'MemoList' }],
         });
+      } else {
+        setLoading(false);
       }
     });
     return unsubscribe; // userの監視状態をキャンセルするためアンマウント時に削除する
   }, []); // []を入れることで、画面表示の一度だけ実行される
 
   function handlePress() {
+    setLoading(true);
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
         const { user } = userCredential;
@@ -34,11 +39,16 @@ export default function LoginScreen(props) {
       })
       .catch((error) => {
         Alert.alert(error.code);
+      })
+      .then(() => {
+        // どちらの処理の後も実行する
+        setLoading(false);
       });
   }
 
   return (
     <KeyboardAvoidingView style={styles.container}>
+      <Loading isLoading={isLoading} />
       <View style={styles.inner}>
         <Text style={styles.title}>Log In</Text>
         <TextInput
