@@ -5,6 +5,7 @@ import {
 import Button from '../components/Button';
 import firebase from 'firebase';
 import Loading from '../components/Loading';
+import { translateErrors } from '../utils';
 
 export default function LoginScreen(props) {
   const { navigation } = props;
@@ -38,7 +39,8 @@ export default function LoginScreen(props) {
         });
       })
       .catch((error) => {
-        Alert.alert(error.code);
+        const errorMsg = translateErrors(error.code);
+        Alert.alert(errorMsg.title, errorMsg.description);
       })
       .then(() => {
         // どちらの処理の後も実行する
