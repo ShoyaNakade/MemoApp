@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import {
   View, TextInput, StyleSheet, KeyboardAvoidingView,
 } from 'react-native';
-import CircleButton from '../components/CircleButton';
 import firebase from 'firebase';
+import CircleButton from '../components/CircleButton';
 
 export default function MemoCreateScreen(props) {
   const { navigation } = props;
